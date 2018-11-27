@@ -1,3 +1,5 @@
+package mvc;
+
 public class Reservation {
     User user;
     private double price;

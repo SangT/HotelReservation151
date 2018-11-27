@@ -1,3 +1,4 @@
+package mvc;
 
 public class Hotel {
     private Room[] room;

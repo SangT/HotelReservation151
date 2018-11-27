@@ -1,3 +1,5 @@
+package mvc;
+
 public class Manager {
     String id;
     String pass;

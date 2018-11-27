@@ -1,3 +1,5 @@
+package mvc;
+
 public class Room {
     private int number;
     private int rate;
