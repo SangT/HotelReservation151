@@ -1,4 +1,4 @@
-package mvc;
+package mvc.user;
 
 public interface User {
 
