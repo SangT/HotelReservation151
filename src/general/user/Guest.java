@@ -1,7 +1,5 @@
 package general.user;
 
-import general.Reservation;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +7,10 @@ import java.util.List;
  * A Guest class
  */
 public class Guest extends Account{
+    /*
+    A user account information includes user id, password, username,
+    and all reservations this user made excluding canceled ones.
+     */
     private String id;
     private String password;
     private List<Reservation> reservationList;

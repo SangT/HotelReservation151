@@ -1,6 +1,6 @@
 package strategypattern;
 
-import general.Reservation;
+import general.user.Reservation;
 
 public interface ReceiptFormatter {
     String formatHeader();
