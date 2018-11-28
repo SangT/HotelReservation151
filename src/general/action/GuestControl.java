@@ -1,5 +1,9 @@
 package general.action;
 
+import general.RoomType;
+
+import java.time.LocalDate;
+
 /**
  * A class to perform Guest functions
  * @author Sang To
@@ -10,5 +14,19 @@ public class GuestControl extends LogIn {
         super(id, pass);
     }
 
+    public void makeReservation(LocalDate in, LocalDate out, RoomType type) {
+        if (out.isEqual(in) && out.isBefore(in)) {
+            System.out.println("Invalid dates. Please input again.");
+            return;
+        }
+    }
+
+    public void viewReservation() {
+
+    }
+
+    public void cancelReservation() {
+
+    }
 
 }
