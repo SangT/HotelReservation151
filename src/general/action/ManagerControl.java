@@ -1,4 +1,4 @@
-package mvc.action;
+package general.action;
 
 /**
  * A class to perform Manager functions

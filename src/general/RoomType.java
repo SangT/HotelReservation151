@@ -1,7 +1,7 @@
-package mvc;
+package general;
 
 /**
- *
+ * RoomType.java - Define enum type for RoomType
  * @author Sang To
  * @version 1.0
  */

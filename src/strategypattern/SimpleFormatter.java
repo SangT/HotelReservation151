@@ -1,6 +1,6 @@
 package strategypattern;
 
-import mvc.Reservation;
+import general.Reservation;
 
 public class SimpleFormatter implements ReceiptFormatter {
     private double total;

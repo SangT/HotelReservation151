@@ -1,4 +1,4 @@
-package mvc;
+package general;
 
 /**
  * System.java - the main class that has the methods to execute the program

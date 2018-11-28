@@ -1,6 +1,6 @@
-package mvc.action;
+package general.action;
 
-import mvc.user.Account;
+import general.user.Account;
 
 /**
  * A LogIn class to check username and password

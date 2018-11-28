@@ -1,4 +1,4 @@
-package mvc.user;
+package general.user;
 
 /**
  * Account.java - A class to store account information

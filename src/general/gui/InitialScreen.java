@@ -1,4 +1,5 @@
-package mvc.gui;
+package general.gui;
 
 public class InitialScreen {
+
 }

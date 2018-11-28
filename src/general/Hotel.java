@@ -1,6 +1,6 @@
-package mvc;
+package general;
 
-import mvc.user.Account;
+import general.user.Account;
 
 import java.util.ArrayList;
 import java.util.List;

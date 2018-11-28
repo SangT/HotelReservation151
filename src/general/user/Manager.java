@@ -1,4 +1,4 @@
-package mvc.user;
+package general.user;
 
 /**
  * Manager.java - A class to store manager information
