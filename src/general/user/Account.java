@@ -4,7 +4,7 @@ package general.user;
  * Account.java - A class to store account information
  * @author Sang To
  * @version 1.0
- * */
+ */
 public class Account {
     private String id;
     private String password;

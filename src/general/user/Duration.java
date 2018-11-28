@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 /**
  * Duration.java - A class to define duration of stay
+ * @author Sang To
+ * @version 1.0
  */
 public class Duration {
     private LocalDate checkIn;

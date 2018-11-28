@@ -1,0 +1,14 @@
+Reservation Records
+
+11/17/2018
+Sang To: sangto,mypassword
+Room 1: 12/02 - 12/03
+Room 2: 12/10 - 12/13
+Nancy Lee: nancy,mypassword
+Room 2: 12/14 - 12/15
+Calvin: calvin,mypassword
+Room 1: 12/04 - 12/05
+Room 3: 12/20 - 12/22
+11/18/2018
+Nancy Lee: nancy,mypassword
+Room 3: 12/22 - 12/23
