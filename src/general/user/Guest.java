@@ -15,8 +15,6 @@ public class Guest extends Account{
 
     public Guest(String id, String password) {
         super(id,password);
-        this.id = id;
-        this.password = password;
         reservationList = new ArrayList<>();
     }
 
