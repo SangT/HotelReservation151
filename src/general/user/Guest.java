@@ -1,7 +1,5 @@
 package general.user;
 
-import general.Reservation;
-
 import java.util.ArrayList;
 import java.util.List;
 
