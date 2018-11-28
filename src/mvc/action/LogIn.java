@@ -4,6 +4,8 @@ import mvc.user.Account;
 
 /**
  * A LogIn class to check username and password
+ * @author Sang To
+ * @version 1.0
  */
 public class LogIn {
     private String id;

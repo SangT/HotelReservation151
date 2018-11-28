@@ -1,5 +1,10 @@
 package mvc;
 
+/**
+ *
+ * @author Sang To
+ * @version 1.0
+ */
 public class Room {
     private int number;
     private boolean isBooked;

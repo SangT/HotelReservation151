@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * A class to manage accounts, reservations, and rooms
+ * @author Sang To
+ * @version 1.0
  */
 public class Hotel {
     private Room[] room;

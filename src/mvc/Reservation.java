@@ -1,13 +1,15 @@
 package mvc;
 
-import mvc.user.User;
-
+/**
+ *
+ * @author Sang To
+ * @version 1.0
+ */
 public class Reservation {
-    User user;
     private double price;
 
-    public Reservation(User user) {
-        this.user = user;
+    public Reservation() {
+
     }
 
 
