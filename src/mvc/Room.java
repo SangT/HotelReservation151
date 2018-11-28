@@ -2,12 +2,12 @@ package mvc;
 
 public class Room {
     private int number;
-    private int rate;
+    private boolean isBooked;
+    private RoomType type;
 
-    public Room(int number, int rate) {
+    public Room(int number, RoomType type) {
         this.number = number;
-        this.rate = rate;
+        this.type = type;
+//        this.isBooked = isBooked;
     }
-
-
 }

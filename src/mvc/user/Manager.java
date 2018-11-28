@@ -1,18 +1,10 @@
 package mvc.user;
 
-public class Manager {
-    String id;
-    String pass;
+/**
+ *
+ */
+public class Manager extends Account{
     public Manager() {
-        id = "manager";
-        pass = "mypasscode";
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getPass() {
-        return pass;
+        super("manager", "mypasscode");
     }
 }
