@@ -21,10 +21,12 @@ public class GuestControl extends LogIn {
         }
     }
 
+    // retrieve information from reservations.txt file
     public void viewReservation() {
 
     }
 
+    // guest can cancel reservation here after viewing reservations
     public void cancelReservation() {
 
     }
