@@ -3,11 +3,11 @@ package general.user;
 import java.time.LocalDate;
 
 /**
- * Duration.java - A class to define duration of stay
+ * StayDuration.java - A class to define duration of stay
  * @author Sang To
  * @version 1.0
  */
-public class Duration {
+public class StayDuration {
     private LocalDate checkIn;
     private LocalDate checkOut;
 
@@ -16,7 +16,7 @@ public class Duration {
      * @param checkIn
      * @param checkOut
      */
-    public Duration(LocalDate checkIn, LocalDate checkOut) {
+    public StayDuration(LocalDate checkIn, LocalDate checkOut) {
         this.checkIn = checkIn;
         this.checkOut = checkOut;
     }

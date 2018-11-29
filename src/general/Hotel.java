@@ -17,6 +17,7 @@ public class Hotel {
     public Hotel() {
         list = new ArrayList<>();
         room = new Room[20];
+        // The first 10 rooms are LUXURY, the rest 10 rooms are ECONOMY
         for (int i = 0; i < room.length; i++) {
             room[i] = new Room(i, i < 10 ? RoomType.LUXURY:RoomType.ECONOMY);
         }

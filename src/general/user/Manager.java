@@ -7,6 +7,6 @@ package general.user;
  */
 public class Manager extends Account{
     public Manager() {
-        super("manager", "mypasscode");
+        super("manager", "managerpasscode");
     }
 }
