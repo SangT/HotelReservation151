@@ -8,6 +8,11 @@ package general;
 public class System {
 
     public static void main(String[] args) {
+        Hotel hotel = Hotel.loadHotel();
+        if (hotel==null) {
+            hotel = new Hotel();
+        }
 
+        hotel.saveHotel();
     }
 }

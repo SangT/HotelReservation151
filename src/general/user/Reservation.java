@@ -2,6 +2,7 @@ package general.user;
 
 import general.Room;
 
+
 /**
  *
  * @author Sang To
@@ -14,9 +15,9 @@ public class Reservation{
     */
     private Guest guest;
     private Room room;
-    private Duration duration;
+    private StayDuration duration;
 
-    public Reservation(Guest guest, Room room, Duration duration) {
+    public Reservation(Guest guest, Room room, StayDuration duration) {
         this.guest = guest;
         this.room = room;
         this.duration = duration;
@@ -38,11 +39,12 @@ public class Reservation{
         this.room = room;
     }
 
-    public Duration getDuration() {
+    public StayDuration getDuration() {
         return duration;
     }
 
-    public void setDuration(Duration duration) {
+    public void setDuration(StayDuration duration) {
         this.duration = duration;
     }
+
 }

@@ -1,6 +1,6 @@
 package general;
 
-import general.user.Duration;
+import general.user.StayDuration;
 
 /**
  *
@@ -9,14 +9,12 @@ import general.user.Duration;
  */
 public class Room {
     private int number;
-    private boolean isBooked;
     private RoomType type;
-    private Duration duration;
+    private StayDuration duration;
 
-    public Room(int number, RoomType type, Duration duration) {
+    public Room(int number, RoomType type) {
         this.number = number;
         this.type = type;
-        this.duration = duration;
     }
 
     public int getNumber() {
@@ -35,12 +33,11 @@ public class Room {
         this.type = type;
     }
 
-    public Duration getDuration() {
+    public StayDuration getDuration() {
         return duration;
     }
 
-    public void setDuration(Duration duration) {
+    public void setDuration(StayDuration duration) {
         this.duration = duration;
     }
-
 }

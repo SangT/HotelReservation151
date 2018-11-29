@@ -5,7 +5,6 @@ import general.user.Reservation;
 public class SimpleFormatter implements ReceiptFormatter {
     private double total;
 
-
     public String formatHeader() {
         total = 0;
         return "\tR\tE\tC\tE\tI\tP\tT\n";
