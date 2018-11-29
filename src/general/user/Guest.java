@@ -5,7 +5,9 @@ import general.RoomType;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A Guest class
@@ -17,11 +19,13 @@ public class Guest extends Account{
      */
     private String id;
     private String password;
-    private List<Reservation> reservationList;
+    private Map<LocalDate, Reservation> reservationList;
+    private Map<LocalDate, Map<LocalDate, Reservation>> map;
 
     public Guest(String id, String password) {
         super(id,password);
-        reservationList = new ArrayList<>();
+        reservationList = new HashMap<>();
+        map = new HashMap<>();
     }
 
     public String getId() {
@@ -40,13 +44,13 @@ public class Guest extends Account{
         this.password = password;
     }
 
-    public List<Reservation> getReservationList() {
+    public Map<LocalDate, Reservation> getReservationList() {
         return reservationList;
     }
 
-    public void setReservationList(List<Reservation> reservationList) {
-        this.reservationList = reservationList;
-    }
+//    public void setReservationList(List<Reservation> reservationList) {
+//        this.reservationList = reservationList;
+//    }
 
     public void makeReservation(LocalDate in, LocalDate out, int number) {
         StayDuration s = new StayDuration(in, out);
@@ -58,7 +62,7 @@ public class Guest extends Account{
         }
         Room room = new Room(number, t);
         Reservation r = new Reservation(this, room, s);
-        reservationList.add(r);
+        reservationList.put(LocalDate.now(), r);
     }
 
     // retrieve information from reservations.txt file
