@@ -12,7 +12,7 @@ public class StayDuration {
     private LocalDate checkOut;
 
     /**
-     * Contructor takes in checkIn and checkOut date
+     * Constructor takes in checkIn and checkOut date
      * @param checkIn
      * @param checkOut
      */
