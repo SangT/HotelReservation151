@@ -32,6 +32,7 @@ public class Hotel implements Serializable {
      */
     public void signUp(String id, String pass) {
         Account a = new Account(id, pass);
+        //check if this id already exists in the system
         list.add(a);
     }
 
