@@ -2,6 +2,8 @@ package general.user;
 
 import general.Room;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Sang To
@@ -45,4 +47,5 @@ public class Reservation{
     public void setDuration(StayDuration duration) {
         this.duration = duration;
     }
+
 }
