@@ -2,7 +2,6 @@ package general.user;
 
 import general.Room;
 
-import java.time.LocalDate;
 
 /**
  *

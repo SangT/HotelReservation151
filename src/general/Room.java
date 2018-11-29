@@ -9,7 +9,6 @@ import general.user.StayDuration;
  */
 public class Room {
     private int number;
-    private boolean isBooked;
     private RoomType type;
     private StayDuration duration;
 
