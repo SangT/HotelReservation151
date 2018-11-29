@@ -26,7 +26,7 @@ public class StayDuration {
         if (checkOut.isEqual(checkIn) || checkOut.isBefore(checkIn)) {
             return false;
         }
-        return checkOut.isAfter(checkIn.plusDays(60));
+        return !checkOut.isAfter(checkIn.plusDays(60));
     }
 
 }

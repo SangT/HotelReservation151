@@ -17,8 +17,6 @@ public class Guest extends Account{
     A user account information includes user id, password, username,
     and all reservations this user made excluding canceled ones.
      */
-    private String id;
-    private String password;
     private Map<LocalDate, Reservation> reservationList;
     private Map<LocalDate, Map<LocalDate, Reservation>> map;
 
@@ -26,22 +24,6 @@ public class Guest extends Account{
         super(id,password);
         reservationList = new HashMap<>();
         map = new HashMap<>();
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public Map<LocalDate, Reservation> getReservationList() {
