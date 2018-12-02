@@ -17,16 +17,16 @@ public class Guest extends Account{
     A user account information includes user id, password, username,
     and all reservations this user made excluding canceled ones.
      */
-    private Map<LocalDate, Reservation> reservationList;
-    private Map<LocalDate, Map<LocalDate, Reservation>> map;
+    private List<Reservation> reservationList;
+    private Map<LocalDate, Reservation> map;
 
     public Guest(String id, String password) {
         super(id,password);
-        reservationList = new HashMap<>();
+        reservationList = new ArrayList<>();
         map = new HashMap<>();
     }
 
-    public Map<LocalDate, Reservation> getReservationList() {
+    public List<Reservation> getReservationList() {
         return reservationList;
     }
 
@@ -44,7 +44,7 @@ public class Guest extends Account{
         }
         Room room = new Room(number, t);
         Reservation r = new Reservation(this, room, s);
-        reservationList.put(LocalDate.now(), r);
+        reservationList.add(r);
     }
 
     // retrieve information from reservations.txt file
