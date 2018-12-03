@@ -14,7 +14,7 @@ import java.util.List;
 public class Hotel implements Serializable {
     private Room[] room;
     private List<Account> list;
-    public static String title = "revervations.txt";
+    public static String title = "reservations.txt";
 
     public Hotel() {
         list = new ArrayList<>();

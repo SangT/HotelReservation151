@@ -13,6 +13,6 @@ public class System {
             hotel = new Hotel();
         }
 
-        hotel.saveHotel();
+        //hotel.saveHotel();
     }
 }
