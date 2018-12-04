@@ -1,4 +1,4 @@
-package general.gui;
+package general.user;
 
 import general.user.Account;
 
