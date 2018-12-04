@@ -4,28 +4,26 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InitialPanel extends JPanel
-{
-    public InitialPanel()
-    {
-        JButton gBtn = new JButton("Guest");
-        JButton mBtn = new JButton("Manager");
+public class InfoOption extends JPanel {
+    public InfoOption() {
+        JButton signUpBtn = new JButton("Sign Up");
+        JButton logInBtn = new JButton("Log In");
 
-        gBtn.addActionListener(new ActionListener() {
+        signUpBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
 
-        mBtn.addActionListener(new ActionListener() {
+        logInBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
 
-        add(gBtn);
-        add(mBtn);
+        add(signUpBtn);
+        add(logInBtn);
     }
 }
