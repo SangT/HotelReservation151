@@ -2,6 +2,8 @@ package general.user;
 
 import general.Room;
 
+import java.time.LocalDate;
+
 
 /**
  *
@@ -16,11 +18,13 @@ public class Reservation{
     private Guest guest;
     private Room room;
     private StayDuration duration;
+    private LocalDate booked;
 
-    public Reservation(Guest guest, Room room, StayDuration duration) {
+    public Reservation(Guest guest, Room room, StayDuration duration, LocalDate booked) {
         this.guest = guest;
         this.room = room;
         this.duration = duration;
+        this.booked = booked;
     }
 
     public Guest getGuest() {
@@ -47,4 +51,11 @@ public class Reservation{
         this.duration = duration;
     }
 
+    public LocalDate getBooked() {
+        return booked;
+    }
+
+    public void setBooked(LocalDate booked) {
+        this.booked = booked;
+    }
 }

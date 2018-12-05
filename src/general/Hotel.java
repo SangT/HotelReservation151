@@ -1,10 +1,12 @@
 package general;
 
 import general.user.Account;
+import general.user.Guest;
+import general.user.Manager;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A class to manage accounts, reservations, and rooms
@@ -13,11 +15,15 @@ import java.util.List;
  */
 public class Hotel implements Serializable {
     private Room[] room;
-    private List<Account> list;
+    private Map<String,Account> accMap;
+    private Manager manager;
+    private Guest guest;
     public static String title = "revervations.txt";
 
     public Hotel() {
-        list = new ArrayList<>();
+        manager = new Manager();
+        loadHotel();
+        accMap = new HashMap<>();
         room = new Room[20];
         // The first 10 rooms are LUXURY, the rest 10 rooms are ECONOMY
         for (int i = 0; i < room.length; i++) {
@@ -30,10 +36,15 @@ public class Hotel implements Serializable {
      * @param id
      * @param pass
      */
-    public void signUp(String id, String pass) {
-        Account a = new Account(id, pass);
-        //check if this id already exists in the system
-        list.add(a);
+    public boolean signUp(String username, String id, String pass) {
+        Account a = accMap.get(id);
+        if (a == null) {
+            Guest guest = new Guest(username,id,pass);
+            accMap.put(id,guest);
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -43,14 +54,11 @@ public class Hotel implements Serializable {
      * @return
      */
     public boolean logIn(String id, String pass) {
-//        if (account.getId().equals(id) && account.getPassword().equals(pass)) {
-//            return true;
-//        }
-        return false;
+        return accMap.containsKey(id) && accMap.get(id).getPassword().equals(pass);
     }
 
     /**
-     *
+     * Deserializing
      * @return Hotel
      */
     public static Hotel loadHotel()
@@ -61,10 +69,8 @@ public class Hotel implements Serializable {
             Object o = ois.readObject();
             Hotel h = (Hotel)o;
             return h;
-        } catch (IOException e)
+        } catch (IOException | ClassNotFoundException e)
         {
-
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -72,7 +78,7 @@ public class Hotel implements Serializable {
     }
 
     /**
-     *
+     * Serializing
      */
     public void saveHotel() {
         try (FileOutputStream fos = new FileOutputStream(title))
@@ -84,4 +90,5 @@ public class Hotel implements Serializable {
         }
 
     }
+
 }

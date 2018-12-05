@@ -3,34 +3,47 @@ package general.user;
 import general.Room;
 import general.RoomType;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * A Guest class
  */
-public class Guest extends Account{
+public class Guest extends Account implements Serializable {
     /*
     A user account information includes user id, password, username,
     and all reservations this user made excluding canceled ones.
      */
+    private String username;
     private List<Reservation> reservationList;
-    private Map<LocalDate, Reservation> map;
+//    private Map<LocalDate, Reservation> map;
 
-    public Guest(String id, String password) {
+    public Guest(String username, String id, String password) {
         super(id,password);
+        this.username = username;
         reservationList = new ArrayList<>();
-        map = new HashMap<>();
+//        map = new HashMap<>();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setReservationList(List<Reservation> reservationList) {
+        this.reservationList = reservationList;
     }
 
     public List<Reservation> getReservationList() {
         return reservationList;
     }
-
-//    public void setReservationList(List<Reservation> reservationList) {
-//        this.reservationList = reservationList;
-//    }
 
     public void makeReservation(LocalDate in, LocalDate out, int number) {
         StayDuration s = new StayDuration(in, out);
@@ -41,7 +54,7 @@ public class Guest extends Account{
             t = RoomType.ECONOMY;
         }
         Room room = new Room(number, t);
-        Reservation r = new Reservation(this, room, s);
+        Reservation r = new Reservation(this, room, s, LocalDate.now());
         reservationList.add(r);
     }
 
@@ -54,4 +67,5 @@ public class Guest extends Account{
     public void cancelReservation(Reservation r) {
         reservationList.remove(r);
     }
+
 }

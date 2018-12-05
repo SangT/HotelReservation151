@@ -9,6 +9,7 @@ import java.io.Serializable;
  * @version 1.0
  */
 public class Account implements Serializable {
+    private String username;
     private String id;
     private String password;
 
@@ -18,6 +19,7 @@ public class Account implements Serializable {
      * @param password
      */
     public Account(String id, String password) {
+//        this.username = username;
         this.id = id;
         this.password = password;
     }
