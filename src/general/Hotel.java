@@ -12,12 +12,9 @@ import java.util.*;
  * @version 1.0
  */
 public class Hotel implements Serializable {
-//    private Room[] room;
     private Map<String,Account> accMap;
     private Manager manager;
-//    private Guest guest;
-    private static Map<Room, SortedMap<LocalDate, Reservation>> roomMap;
-    private static SortedMap<LocalDate,Reservation> sortedMap;
+    public static Map<Room, TreeMap<LocalDate, Reservation>> roomMap;
     public static String title = "reservations.txt";
 
     public Hotel() {
@@ -25,12 +22,14 @@ public class Hotel implements Serializable {
         loadHotel();
         accMap = new HashMap<>();
         roomMap = new HashMap<>();
-        sortedMap = new TreeMap<>();
-//        room = new Room[20];
-//        // The first 10 rooms are LUXURY, the rest 10 rooms are ECONOMY
-//        for (int i = 0; i < room.length; i++) {
-//            room[i] = new Room(i, i < 10 ? RoomType.LUXURY:RoomType.ECONOMY);
-//        }
+        for (int i = 1; i <= 10; i++) {
+            Room room = new Room(i, RoomType.LUXURY);
+            roomMap.put(room, new TreeMap<>());
+        }
+        for (int i = 11; i <= 20; i++) {
+            Room room = new Room(i, RoomType.ECONOMY);
+            roomMap.put(room, new TreeMap<>());
+        }
     }
 
     /**

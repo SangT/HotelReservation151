@@ -10,7 +10,7 @@ import general.user.StayDuration;
 public class Room {
     private int number;
     private RoomType type;
-    private StayDuration duration;
+//    private StayDuration duration;
 
     public Room(int number, RoomType type) {
         this.number = number;
@@ -32,12 +32,12 @@ public class Room {
     public void setType(RoomType type) {
         this.type = type;
     }
-
-    public StayDuration getDuration() {
-        return duration;
-    }
-
-    public void setDuration(StayDuration duration) {
-        this.duration = duration;
-    }
+//
+//    public StayDuration getDuration() {
+//        return duration;
+//    }
+//
+//    public void setDuration(StayDuration duration) {
+//        this.duration = duration;
+//    }
 }

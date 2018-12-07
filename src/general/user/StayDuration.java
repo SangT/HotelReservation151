@@ -29,4 +29,28 @@ public class StayDuration {
         return !checkOut.isAfter(checkIn.plusDays(60));
     }
 
+    public boolean isConflict(StayDuration other) {
+
+        if (checkOut.isBefore(other.checkIn) || checkIn.isAfter(other.checkOut)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public LocalDate getCheckIn() {
+        return checkIn;
+    }
+
+    public void setCheckIn(LocalDate checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public LocalDate getCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(LocalDate checkOut) {
+        this.checkOut = checkOut;
+    }
 }
