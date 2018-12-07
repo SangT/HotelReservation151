@@ -1,12 +1,10 @@
 package general;
 
-import general.user.Account;
-import general.user.Guest;
-import general.user.Manager;
+import general.user.*;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.*;
 
 /**
  * A class to manage accounts, reservations, and rooms
@@ -14,25 +12,29 @@ import java.util.Map;
  * @version 1.0
  */
 public class Hotel implements Serializable {
-    private Room[] room;
+//    private Room[] room;
     private Map<String,Account> accMap;
     private Manager manager;
-    private Guest guest;
-    public static String title = "revervations.txt";
+//    private Guest guest;
+    private static Map<Room, SortedMap<LocalDate, Reservation>> roomMap;
+    private static SortedMap<LocalDate,Reservation> sortedMap;
+    public static String title = "reservations.txt";
 
     public Hotel() {
         manager = new Manager();
         loadHotel();
         accMap = new HashMap<>();
-        room = new Room[20];
-        // The first 10 rooms are LUXURY, the rest 10 rooms are ECONOMY
-        for (int i = 0; i < room.length; i++) {
-            room[i] = new Room(i, i < 10 ? RoomType.LUXURY:RoomType.ECONOMY);
-        }
+        roomMap = new HashMap<>();
+        sortedMap = new TreeMap<>();
+//        room = new Room[20];
+//        // The first 10 rooms are LUXURY, the rest 10 rooms are ECONOMY
+//        for (int i = 0; i < room.length; i++) {
+//            room[i] = new Room(i, i < 10 ? RoomType.LUXURY:RoomType.ECONOMY);
+//        }
     }
 
     /**
-     * Create new guest account
+     * Creates new guest account
      * @param id
      * @param pass
      */
@@ -67,13 +69,12 @@ public class Hotel implements Serializable {
         {
             ObjectInputStream ois = new ObjectInputStream(fis);
             Object o = ois.readObject();
-            Hotel h = (Hotel)o;
-            return h;
+//            Hotel h = (Hotel)o;
+            return (Hotel)o;
         } catch (IOException | ClassNotFoundException e)
         {
             e.printStackTrace();
         }
-
         return null;
     }
 
@@ -88,7 +89,6 @@ public class Hotel implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 }

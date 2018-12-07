@@ -58,6 +58,30 @@ public class Guest extends Account implements Serializable {
         reservationList.add(r);
     }
 
+    /**
+     * Checks room available based on types
+     * @param s
+     * @param type
+     * @return
+     */
+    public List<Room> checkAvailableType(StayDuration s, RoomType type) {
+        List<Room> listType = new ArrayList<>();
+
+
+        return listType;
+    }
+
+    /**
+     * Checks all available rooms
+     * @param s
+     * @return
+     */
+    public List<Room> checkAvailableDay(StayDuration s) {
+        List<Room> listDay = new ArrayList<>();
+
+        return listDay;
+    }
+
     // retrieve information from reservations.txt file
     public void viewReservation() {
 
