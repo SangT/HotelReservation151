@@ -19,7 +19,7 @@ public class Hotel implements Serializable {
     private static final int TOTAL_ROOMS = 20;
 
     public Hotel() {
-        manager = new Manager();
+        manager = new Manager(this);
         accMap = new HashMap<>();
         accMap.put(manager.getId(),manager);
         roomMap = new HashMap<>(TOTAL_ROOMS);
@@ -55,10 +55,11 @@ public class Hotel implements Serializable {
 
     /**
      * Checks all available rooms
-     * @param s
+     * @param in
+     * @param out
      * @return
      */
-    public List<Room> checkAvailableRoom(StayDuration s) {
+    public List<Room> checkAvailableRoom(LocalDate in, LocalDate out) {
         List<Room> listDay = new ArrayList<>();
         /*
         retrieve startday from duration
@@ -71,19 +72,92 @@ public class Hotel implements Serializable {
         otherwise
             add event
          */
-        LocalDate in = s.getCheckIn();
+//        LocalDate in = s.getCheckIn();
         for (Map.Entry<Room, TreeMap<LocalDate, Reservation>> map : roomMap.entrySet()) {
             Room room = map.getKey();
             TreeMap<LocalDate, Reservation> m = roomMap.get(room);
+
             // Get the greatest but smaller than the "in" value
             LocalDate expected = m.floorKey(in);
+            StayDuration s = new StayDuration(in, out);
             if (expected == null) {
                 listDay.add(room);
             } else if (!m.get(expected).getDuration().isConflict(s)) {
                 listDay.add(room);
             }
+            // if checkout date = null, check for available/unavailable room on that check-in day
+//            } else {
+//                if (!m.containsKey(in) || in.isBefore(m.ceilingKey(in)) ) {
+//                    listDay.add(room);
+//                } else if (in.isAfter(m.floorKey(in)) && in.isBefore(m.get(m.floorKey(in)).getDuration().getCheckOut())) {
+//                    listDay.add(room);
+//                } else {
+//
+//                }
+//            }
         }
         return listDay;
+    }
+
+    /**
+     * Gets available rooms in a chosen day
+     * @param chosenDay
+     * @return
+     */
+    public Set<Room> getRoomInfoByDay(LocalDate chosenDay) {
+        Set<Room> avaiList = new TreeSet<>((o1, o2) -> o1.getNumber()>o2.getNumber()?1:-1);
+
+        for (Map.Entry<Room, TreeMap<LocalDate, Reservation>> map : roomMap.entrySet()) {
+            Room room = map.getKey();
+            TreeMap<LocalDate, Reservation> m = roomMap.get(room);
+            LocalDate expected = m.floorKey(chosenDay);
+//            LocalDate in = m.get(expected).getDuration().getCheckIn();
+            LocalDate out = m.get(expected).getDuration().getCheckOut();
+            if (expected == null) {
+                avaiList.add(room);
+            } else if (chosenDay.isEqual(out) || chosenDay.isAfter(out)) {
+                avaiList.add(room);
+            }
+        }
+        return avaiList;
+    }
+
+    /**
+     * Get unavailable rooms in a chosen day
+     * @param chosen
+     * @param avaiR
+     * @return
+     */
+    public Map<Room,String> getUnavaiRoombyDay(LocalDate chosen, Set<Room> avaiR) {
+        Map<Room,String> unVmap = new HashMap<>();
+
+        for (Map.Entry<Room, TreeMap<LocalDate, Reservation>> map : roomMap.entrySet()) {
+            Room room = map.getKey();
+            if (avaiR.contains(room)) {
+                continue;
+            }
+            TreeMap<LocalDate, Reservation> m = roomMap.get(room);
+            String g = m.get(chosen).getGuest().getUsername();
+            unVmap.put(room,g);
+        }
+
+        return unVmap;
+    }
+
+    /**
+     * Gets all stay durations of each room
+     * @param room
+     * @return
+     */
+    public List<StayDuration> getRoomDuration(Room room){
+        List<StayDuration> roomDuration = new ArrayList<>();
+        TreeMap<LocalDate, Reservation> m = roomMap.get(room);
+
+        for (Reservation r : m.values()) {
+            StayDuration s = r.getDuration();
+            roomDuration.add(s);
+        }
+        return roomDuration;
     }
 
     /**

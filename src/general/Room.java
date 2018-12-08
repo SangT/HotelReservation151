@@ -32,12 +32,5 @@ public class Room {
     public void setType(RoomType type) {
         this.type = type;
     }
-//
-//    public StayDuration getDuration() {
-//        return duration;
-//    }
-//
-//    public void setDuration(StayDuration duration) {
-//        this.duration = duration;
-//    }
+
 }

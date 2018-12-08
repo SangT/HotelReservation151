@@ -21,7 +21,6 @@ public class Account implements Serializable {
      * @param password
      */
     public Account(Hotel h, String id, String password) {
-//        this.username = username;
         hotelStayingAt = h;
         this.id = id;
         this.password = password;
@@ -35,4 +34,7 @@ public class Account implements Serializable {
         return password;
     }
 
+    public Hotel getHotelStayingAt() {
+        return hotelStayingAt;
+    }
 }

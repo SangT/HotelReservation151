@@ -18,4 +18,15 @@ public enum RoomType {
     public double getPrice() {
         return price;
     }
+
+    public String toString() {
+        switch(this) {
+            case LUXURY:
+                return "Luxury";
+            case ECONOMY:
+                return "Economy";
+            default:
+                return "";
+        }
+    }
 }
