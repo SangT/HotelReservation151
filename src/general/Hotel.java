@@ -13,23 +13,41 @@ import java.util.*;
  */
 public class Hotel implements Serializable {
     private Map<String,Account> accMap;
+    private Map<Room, TreeMap<LocalDate, Reservation>> roomMap;
     private Manager manager;
-    public static Map<Room, TreeMap<LocalDate, Reservation>> roomMap;
-    public static String title = "reservations.txt";
+    private static final String TITLE = "reservations.txt";
+    private static final int TOTAL_ROOMS = 20;
 
     public Hotel() {
         manager = new Manager();
-        loadHotel();
         accMap = new HashMap<>();
-        roomMap = new HashMap<>();
-        for (int i = 1; i <= 10; i++) {
-            Room room = new Room(i, RoomType.LUXURY);
-            roomMap.put(room, new TreeMap<>());
+        accMap.put(manager.getId(),manager);
+        roomMap = new HashMap<>(TOTAL_ROOMS);
+        for (int i = 1; i <= TOTAL_ROOMS / 2; i++) {
+            Room roomLUX = new Room(i, RoomType.LUXURY);
+            Room roomECO = new Room(i + TOTAL_ROOMS / 2, RoomType.ECONOMY);
+            roomMap.put(roomLUX, new TreeMap<>());
+            roomMap.put(roomECO, new TreeMap<>());
         }
-        for (int i = 11; i <= 20; i++) {
-            Room room = new Room(i, RoomType.ECONOMY);
-            roomMap.put(room, new TreeMap<>());
-        }
+    }
+
+    public void reserveRoom(Room room, StayDuration s, Guest guest) {
+        Reservation r = new Reservation(guest, room, s, LocalDate.now());
+        TreeMap<LocalDate, Reservation> m = roomMap.get(room);
+        m.put(s.getCheckIn(), r);
+        guest.addReservation(r);
+        roomMap.put(room, m);
+    }
+
+    /**
+     * Checks all available rooms
+     * @param s
+     * @return
+     */
+    public List<Room> checkAvailableRoom(StayDuration s) {
+        List<Room> listDay = new ArrayList<>();
+
+        return listDay;
     }
 
     /**
@@ -40,7 +58,7 @@ public class Hotel implements Serializable {
     public boolean signUp(String username, String id, String pass) {
         Account a = accMap.get(id);
         if (a == null) {
-            Guest guest = new Guest(username,id,pass);
+            Guest guest = new Guest(username,this,id,pass);
             accMap.put(id,guest);
             return true;
         }
@@ -64,7 +82,7 @@ public class Hotel implements Serializable {
      */
     public static Hotel loadHotel()
     {
-        try (FileInputStream fis = new FileInputStream(title))
+        try (FileInputStream fis = new FileInputStream(TITLE))
         {
             ObjectInputStream ois = new ObjectInputStream(fis);
             Object o = ois.readObject();
@@ -81,7 +99,7 @@ public class Hotel implements Serializable {
      * Serializing
      */
     public void saveHotel() {
-        try (FileOutputStream fos = new FileOutputStream(title))
+        try (FileOutputStream fos = new FileOutputStream(TITLE))
         {
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(this);

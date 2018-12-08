@@ -1,5 +1,7 @@
 package general.user;
 
+import general.Hotel;
+
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
@@ -9,17 +11,18 @@ import java.io.Serializable;
  * @version 1.0
  */
 public class Account implements Serializable {
-    private String username;
     private String id;
     private String password;
+    protected Hotel hotelStayingAt;
 
     /**
      * Account class has id and password for log in
      * @param id
      * @param password
      */
-    public Account(String id, String password) {
+    public Account(Hotel h, String id, String password) {
 //        this.username = username;
+        hotelStayingAt = h;
         this.id = id;
         this.password = password;
     }
@@ -28,19 +31,8 @@ public class Account implements Serializable {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void writeObject(ObjectOutputStream out) {
-
-    }
 }

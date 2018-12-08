@@ -31,11 +31,7 @@ public class StayDuration {
 
     public boolean isConflict(StayDuration other) {
 
-        if (checkOut.isBefore(other.checkIn) || checkIn.isAfter(other.checkOut)) {
-            return false;
-        } else {
-            return true;
-        }
+        return !checkOut.isBefore(other.checkIn) && !checkIn.isAfter(other.checkOut);
     }
 
     public LocalDate getCheckIn() {

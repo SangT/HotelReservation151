@@ -31,31 +31,15 @@ public class Reservation{
         return guest;
     }
 
-    public void setGuest(Guest guest) {
-        this.guest = guest;
-    }
-
     public Room getRoom() {
         return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
     }
 
     public StayDuration getDuration() {
         return duration;
     }
 
-    public void setDuration(StayDuration duration) {
-        this.duration = duration;
-    }
-
     public LocalDate getBooked() {
         return booked;
-    }
-
-    public void setBooked(LocalDate booked) {
-        this.booked = booked;
     }
 }
