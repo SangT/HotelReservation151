@@ -31,11 +31,25 @@ public class Hotel implements Serializable {
         }
     }
 
+    /**
+     * To reserve a room and save in the system
+     * @param room
+     * @param s
+     * @param guest
+     */
     public void reserveRoom(Room room, StayDuration s, Guest guest) {
         Reservation r = new Reservation(guest, room, s, LocalDate.now());
         TreeMap<LocalDate, Reservation> m = roomMap.get(room);
         m.put(s.getCheckIn(), r);
         guest.addReservation(r);
+        roomMap.put(room, m);
+    }
+
+    public void removeReservation(Room room, StayDuration s, Guest guest) {
+        TreeMap<LocalDate, Reservation> m = roomMap.get(room);
+        Reservation r = m.get(s.getCheckIn());
+        m.remove(s.getCheckIn());
+        guest.cancelReservation(r);
         roomMap.put(room, m);
     }
 
@@ -46,7 +60,29 @@ public class Hotel implements Serializable {
      */
     public List<Room> checkAvailableRoom(StayDuration s) {
         List<Room> listDay = new ArrayList<>();
-
+        /*
+        retrieve startday from duration
+        enhanced for loop through VALUES of map
+        for every map you loop through...
+        search floor entry using start day
+        if nothing returns, add room to list
+        otherwise if floor entry's duration and stay duration conflict...
+            dont add event
+        otherwise
+            add event
+         */
+        LocalDate in = s.getCheckIn();
+        for (Map.Entry<Room, TreeMap<LocalDate, Reservation>> map : roomMap.entrySet()) {
+            Room room = map.getKey();
+            TreeMap<LocalDate, Reservation> m = roomMap.get(room);
+            // Get the greatest but smaller than the "in" value
+            LocalDate expected = m.floorKey(in);
+            if (expected == null) {
+                listDay.add(room);
+            } else if (!m.get(expected).getDuration().isConflict(s)) {
+                listDay.add(room);
+            }
+        }
         return listDay;
     }
 
@@ -74,6 +110,10 @@ public class Hotel implements Serializable {
      */
     public boolean logIn(String id, String pass) {
         return accMap.containsKey(id) && accMap.get(id).getPassword().equals(pass);
+    }
+
+    public Map<Room, TreeMap<LocalDate, Reservation>> getRoomMap() {
+        return roomMap;
     }
 
     /**

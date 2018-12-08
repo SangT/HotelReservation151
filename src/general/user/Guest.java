@@ -35,8 +35,6 @@ public class Guest extends Account implements Serializable {
 
     public void addReservation(Reservation r) {
         reservationList.add(r);
-//        hotelStayingAt.reserveRoom(r);
-        //Hotel.roomMap.get(room).put(in, r);
     }
 
     // retrieve information from reservations.txt file
