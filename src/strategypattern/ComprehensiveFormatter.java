@@ -12,13 +12,9 @@ import java.util.List;
 public class ComprehensiveFormatter implements ReceiptFormatter {
     private double total;
 
-    public ComprehensiveFormatter() {
-
-    }
-
     public String formatHeader() {
         total = 0;
-        return "\tR\tE\tC\tE\tI\tP\tT\n";
+        return " C  O  M  P  R  E  H  E  N  S  I  V  E    R  E  C  E  I  P  T\n";
     }
 
     public String formatReservation(Reservation r) {

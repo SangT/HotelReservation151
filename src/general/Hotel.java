@@ -45,6 +45,12 @@ public class Hotel implements Serializable {
         roomMap.put(room, m);
     }
 
+    /**
+     *
+     * @param room
+     * @param s
+     * @param guest
+     */
     public void removeReservation(Room room, StayDuration s, Guest guest) {
         TreeMap<LocalDate, Reservation> m = roomMap.get(room);
         Reservation r = m.get(s.getCheckIn());
@@ -72,7 +78,7 @@ public class Hotel implements Serializable {
         otherwise
             add event
          */
-//        LocalDate in = s.getCheckIn();
+
         for (Map.Entry<Room, TreeMap<LocalDate, Reservation>> map : roomMap.entrySet()) {
             Room room = map.getKey();
             TreeMap<LocalDate, Reservation> m = roomMap.get(room);
@@ -85,16 +91,6 @@ public class Hotel implements Serializable {
             } else if (!m.get(expected).getDuration().isConflict(s)) {
                 listDay.add(room);
             }
-            // if checkout date = null, check for available/unavailable room on that check-in day
-//            } else {
-//                if (!m.containsKey(in) || in.isBefore(m.ceilingKey(in)) ) {
-//                    listDay.add(room);
-//                } else if (in.isAfter(m.floorKey(in)) && in.isBefore(m.get(m.floorKey(in)).getDuration().getCheckOut())) {
-//                    listDay.add(room);
-//                } else {
-//
-//                }
-//            }
         }
         return listDay;
     }
@@ -170,6 +166,7 @@ public class Hotel implements Serializable {
         if (a == null) {
             Guest guest = new Guest(username,this,id,pass);
             accMap.put(id,guest);
+            saveHotel();
             return true;
         }
 
@@ -186,6 +183,10 @@ public class Hotel implements Serializable {
         return accMap.containsKey(id) && accMap.get(id).getPassword().equals(pass);
     }
 
+    /**
+     *
+     * @return
+     */
     public Map<Room, TreeMap<LocalDate, Reservation>> getRoomMap() {
         return roomMap;
     }
@@ -200,12 +201,14 @@ public class Hotel implements Serializable {
         {
             ObjectInputStream ois = new ObjectInputStream(fis);
             Object o = ois.readObject();
-//            Hotel h = (Hotel)o;
             return (Hotel)o;
-        } catch (IOException | ClassNotFoundException e)
+        }
+        catch (FileNotFoundException e) { /* ignored */ }
+        catch (IOException | ClassNotFoundException e)
         {
             e.printStackTrace();
         }
+
         return null;
     }
 

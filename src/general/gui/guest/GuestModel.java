@@ -1,4 +1,4 @@
-package general.gui;
+package general.gui.guest;
 
 import general.Room;
 

@@ -1,5 +1,6 @@
 package general.user;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -7,7 +8,7 @@ import java.time.LocalDate;
  * @author Sang To
  * @version 1.0
  */
-public class StayDuration {
+public class StayDuration implements Serializable {
     private LocalDate checkIn;
     private LocalDate checkOut;
 

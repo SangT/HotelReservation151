@@ -3,6 +3,7 @@ package general.user;
 import general.Hotel;
 import general.Room;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +15,8 @@ import java.util.TreeMap;
  * @author Sang To
  * @version 1.0
  */
-public class Manager extends Account {
-    public Manager(Hotel h) {
-        super(h, "manager", "managerpasscode");
+public class Manager extends Account implements Serializable {
+    public Manager(Hotel hotel) {
+        super( hotel,"manager", "managerpasscode");
     }
 }

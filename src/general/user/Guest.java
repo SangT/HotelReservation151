@@ -9,7 +9,9 @@ import java.time.LocalDate;
 import java.util.*;
 
 /**
- * A Guest class
+ * Guest.java - A class to instantiate guest object
+ * @author Sang To
+ * @version 1.0
  */
 public class Guest extends Account implements Serializable {
     /*

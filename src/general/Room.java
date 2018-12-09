@@ -1,13 +1,14 @@
 package general;
 
-import general.user.StayDuration;
+
+import java.io.Serializable;
 
 /**
  *
  * @author Sang To
  * @version 1.0
  */
-public class Room {
+public class Room implements Serializable {
     private int number;
     private RoomType type;
 //    private StayDuration duration;

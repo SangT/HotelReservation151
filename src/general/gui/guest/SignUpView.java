@@ -1,11 +1,9 @@
-package general.gui;
+package general.gui.guest;
 
 import general.Hotel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * SignUpView.java - A class to have user sign up for first timer
@@ -37,25 +35,23 @@ public class SignUpView extends JPanel {
         page.add(passField);
 
         JButton btn = new JButton("Sign Up");
-        btn.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent event){
-                String nameInput = nameField.getText();
-                String idInput = idField.getText();
-                String passInput = passField.getText();
+        btn.addActionListener(event -> {
+            String nameInput = nameField.getText();
+            String idInput = idField.getText();
+            String passInput = passField.getText();
 
-                if(hotel.signUp(nameInput,idInput,passInput))
-                {
-                    header.setVisible(false);
-                    page.setVisible(false);
-                    btn.setVisible(false);
-                    RevOption option = new RevOption(hotel);
-                    add(option);
-                } else {
-                    JLabel warning = new JLabel("This id already exists. Please choose another id!");
-                    add(warning);
-                }
-
+            if(hotel.signUp(nameInput,idInput,passInput))
+            {
+                header.setVisible(false);
+                page.setVisible(false);
+                btn.setVisible(false);
+                RevOption option = new RevOption(hotel);
+                add(option);
+            } else {
+                JLabel warning = new JLabel("This id already exists. Please choose another id!");
+                add(warning);
             }
+
         });
         add(header);
         add(page);

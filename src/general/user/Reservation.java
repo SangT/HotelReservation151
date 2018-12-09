@@ -2,6 +2,7 @@ package general.user;
 
 import general.Room;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import java.time.format.DateTimeFormatter;
@@ -13,7 +14,7 @@ import java.time.temporal.ChronoUnit;
  * @author Sang To and Matt Ruben
  * @version 1.0
  */
-public class Reservation implements Comparable<Reservation> {
+public class Reservation implements Comparable<Reservation>, Serializable {
     /*
     Each reservation record knows who made this reservation, which room is assigned,
     and the period of the reservation
