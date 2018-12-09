@@ -1,7 +1,7 @@
 package general.gui.guest;
 
 import general.Hotel;
-import general.gui.MakeRev;
+import general.user.Guest;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -13,14 +13,14 @@ import java.awt.event.ActionListener;
  * @version 1.0
  */
 public class RevOption extends JPanel {
-    public RevOption(Hotel hotel) {
+    public RevOption(Hotel hotel, Guest guest, JFrame frame) {
         JButton makeBtn = new JButton("Make a Reservation");
         JButton vcBtn = new JButton("View/Cancel a Reservation");
 
         makeBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MakeRev mr = new MakeRev();
+                MakeRev mr = new MakeRev(hotel, guest, frame);
                 makeBtn.setVisible(false);
                 vcBtn.setVisible(false);
                 add(mr);
@@ -30,7 +30,7 @@ public class RevOption extends JPanel {
         vcBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ViewCancelRev vcr = new ViewCancelRev();
+                ViewCancelRev vcr = new ViewCancelRev(hotel, guest, frame);
                 makeBtn.setVisible(false);
                 vcBtn.setVisible(false);
                 add(vcr);

@@ -1,6 +1,7 @@
 package general.gui.guest;
 
 import general.Hotel;
+import general.user.Guest;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.awt.*;
  * @version 1.0
  */
 public class SignUpView extends JPanel {
-    public SignUpView(Hotel hotel) {
+    public SignUpView(Hotel hotel, Guest guest, JFrame frame) {
         JPanel header = new JPanel();
         header.add(new JLabel("CREATE A NEW ACCOUNT"));
 
@@ -45,7 +46,7 @@ public class SignUpView extends JPanel {
                 header.setVisible(false);
                 page.setVisible(false);
                 btn.setVisible(false);
-                RevOption option = new RevOption(hotel);
+                RevOption option = new RevOption(hotel,guest,frame);
                 add(option);
             } else {
                 JLabel warning = new JLabel("This id already exists. Please choose another id!");

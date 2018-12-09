@@ -3,6 +3,7 @@ package general.gui;
 import general.Hotel;
 import general.gui.guest.RevOption;
 import general.gui.manager.ManagerGUI;
+import general.user.Guest;
 import general.user.Manager;
 
 import javax.swing.*;
@@ -16,7 +17,7 @@ import java.awt.event.ActionListener;
  * @version 1.0
  */
 public class LogInView extends JPanel {
-    public LogInView(Hotel hotel, Manager manager, JFrame frame) {
+    public LogInView(Hotel hotel, Manager manager, Guest guest, JFrame frame) {
         JPanel header = new JPanel();
         header.add(new JLabel("LOG IN"));
         add(header);
@@ -52,13 +53,11 @@ public class LogInView extends JPanel {
                     btn.setVisible(false);
                     if (idInput.equals(manager.getId()))
                     {
-                        ManagerGUI managerGUI = new ManagerGUI(hotel);
-//                        add(managerGUI);
+                        ManagerGUI managerGUI = new ManagerGUI(hotel); // ManagerGUI causes the program to crashed
                         frame.setContentPane(managerGUI);
                         managerGUI.setVisible(true);
                     } else {
-                        RevOption option = new RevOption(hotel);
-//                        add(option);
+                        RevOption option = new RevOption(hotel,guest,frame);
                         frame.setContentPane(option);
                     }
                 } else {

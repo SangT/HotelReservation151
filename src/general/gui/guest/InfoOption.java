@@ -3,6 +3,7 @@ package general.gui.guest;
 import general.Hotel;
 import general.gui.LogInView;
 import general.gui.guest.SignUpView;
+import general.user.Guest;
 import general.user.Manager;
 
 import javax.swing.*;
@@ -15,17 +16,16 @@ import java.awt.event.ActionListener;
  * @version 1.0
  */
 public class InfoOption extends JPanel {
-    public InfoOption(Hotel hotel, Manager manager, JFrame frame) {
+    public InfoOption(Hotel hotel, Manager manager, Guest guest, JFrame frame) {
         JButton signUpBtn = new JButton("Sign Up");
         JButton logInBtn = new JButton("Log In");
 
         signUpBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SignUpView createAccount = new SignUpView(hotel);
+                SignUpView createAccount = new SignUpView(hotel,guest,frame);
                 signUpBtn.setVisible(false);
                 logInBtn.setVisible(false);
-//                add(createAccount);
                 frame.setContentPane(createAccount);
             }
         });
@@ -33,10 +33,9 @@ public class InfoOption extends JPanel {
         logInBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LogInView logPage = new LogInView(hotel, manager,frame);
+                LogInView logPage = new LogInView(hotel, manager,guest,frame);
                 signUpBtn.setVisible(false);
                 logInBtn.setVisible(false);
-//                add(logPage);
                 frame.setContentPane(logPage);
             }
         });
