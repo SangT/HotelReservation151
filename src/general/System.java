@@ -22,5 +22,6 @@ public class System {
 
 
         hotel.saveHotel();
+        java.lang.System.out.println("DANKMEMES");
     }
 }

@@ -4,6 +4,7 @@ import general.Hotel;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Account.java - A class to store account information
@@ -14,6 +15,15 @@ public class Account implements Serializable {
     private String id;
     private String password;
     protected Hotel hotelStayingAt;
+    
+    
+    /* start changes */
+    private List<Reservation> reservationList;
+    
+    public List<Reservation> getReservationList() {
+        return reservationList;
+    }
+    /* end changes */
 
     /**
      * Account class has id and password for log in

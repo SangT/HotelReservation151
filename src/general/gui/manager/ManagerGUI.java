@@ -11,20 +11,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.AbstractListModel;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.ListSelectionModel;
-import javax.swing.GroupLayout;
-import javax.swing.LayoutStyle;
-import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -65,25 +52,27 @@ public class ManagerGUI extends JFrame {
     private JButton saveButton;
     private JButton quitButton;
     
-//    public static void main(String args[]) {
-//        /* Set the System look and feel */
-//        try {
-//           UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//        } catch (ClassNotFoundException |
-//                InstantiationException |
-//                IllegalAccessException |
-//                UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(ManagerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            @Override
-//            public void run() {
-//                new ManagerGUI().setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        /* Set the System look and feel */
+        try {
+           UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException |
+                InstantiationException |
+                IllegalAccessException |
+                UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ManagerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                
+                Hotel hotel = Hotel.loadHotel();
+                new ManagerGUI(hotel).setVisible(true);
+            }
+        });
+    }
     
     public ManagerGUI(Hotel hotel) {
         borderLayout = new BorderLayout(15, 15);
@@ -99,6 +88,10 @@ public class ManagerGUI extends JFrame {
      * Handles initialization of components
      */
     private void createComponents() {
+    
+        frameTitleLabel = new JLabel();
+        
+        
         // Calendar Panel:
         calendarPanel = new JPanel();
         currentMonthLabel = new JLabel();
@@ -133,7 +126,7 @@ public class ManagerGUI extends JFrame {
      * Handles Save Button Presses
      * @param event 
      */
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void saveButtonActionPerformed(ActionEvent event) {                                           
         // TODO add your handling code here:
     }
     
@@ -141,7 +134,7 @@ public class ManagerGUI extends JFrame {
      * Handles Quit Button Presses
      * @param event 
      */
-    private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void quitButtonActionPerformed(ActionEvent event) {                                           
         // TODO add your handling code here:
         this.dispose();
     }  
